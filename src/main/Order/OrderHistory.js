@@ -30,13 +30,16 @@ export default function OrderHistory(props) {
   );
 
   const getStatus = () => {
-    Axios.get("https://luanvan-server.herokuapp.com/get-order-status").then((res) => {
+    Axios.get("http://localhost:3001/get-order-status").then((res) => {
       setStatus(res.data);
     });
   };
 
   useEffect(() => {
     getStatus();
+    if (!document.querySelector(".navigation-mobile.hide")) {
+      document.querySelector(".navigation-mobile").classList.toggle("hide");
+    }
   }, []);
 
   const header = () => {

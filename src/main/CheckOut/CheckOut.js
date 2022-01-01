@@ -33,37 +33,6 @@ function CheckOut(props) {
     voucher_value: 0,
   });
 
-  const showFormAccount = () => {
-    document.getElementById("overlay").classList.toggle("active");
-    document.getElementById("userAccount").classList.toggle("active");
-  };
-
-  // const show = () => {
-  //   if (customerInfo.user_id === 0) {
-  //     showFormAccount();
-  //   } else {
-  //     document.getElementById("checkout-content").classList.toggle("hide");
-  //     document.getElementById("checkout-info").classList.toggle("show");
-  //     const text = document.getElementById("toggleCheckOutBtn");
-  //     if (text.innerHTML === "Tiếp theo") {
-  //       text.innerHTML = "Quay lại";
-  //     } else {
-  //       text.innerHTML = "Tiếp theo";
-  //     }
-  //   }
-  // };
-
-  const show = () => {
-    document.getElementById("checkout-content").classList.toggle("hide");
-    document.getElementById("checkout-info").classList.toggle("show");
-    const text = document.getElementById("toggleCheckOutBtn");
-    if (text.innerHTML === "Tiếp theo") {
-      text.innerHTML = "Quay lại";
-    } else {
-      text.innerHTML = "Tiếp theo";
-    }
-  };
-
   const getOrderInfo = (info) => {
     setOrderInfo(info);
   };
@@ -91,7 +60,7 @@ function CheckOut(props) {
       },
     };
     if ((orderInfo.payment_method = "Khi nhận hàng")) {
-      Axios.post("https://luanvan-server.herokuapp.com/ordering", orderInfo, config).then(
+      Axios.post("http://localhost:3001/ordering", orderInfo, config).then(
         (res) => {
           if (res.data.status === true) {
             onRemoveCartItems();
@@ -125,6 +94,7 @@ function CheckOut(props) {
   const showOrderConfirm = () => {
     document.getElementById("overlay").classList.toggle("active");
     document.getElementById("confirm_order").classList.toggle("active");
+    document.querySelector(".navigation-mobile").classList.toggle("zIndex1");
   };
 
   useEffect(() => {
@@ -172,7 +142,6 @@ function CheckOut(props) {
           shippingFee={shippingFee}
           getVoucher={getVoucher}
           discount={discount}
-          show={show}
           cartItems={cartItems}
           customerInfo={customerInfo}
         />

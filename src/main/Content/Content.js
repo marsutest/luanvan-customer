@@ -12,19 +12,19 @@ function Content(props) {
   const [bestSelling, setBestSelling] = useState([]);
 
   const getCategories = () => {
-    Axios.get("https://luanvan-server.herokuapp.com/categories").then((response) => {
+    Axios.get("http://localhost:3001/categories").then((response) => {
       setCategories(response.data);
     });
   };
 
   const getNewBook = () => {
-    Axios.get("https://luanvan-server.herokuapp.com/new-book").then((res) => {
+    Axios.get("http://localhost:3001/new-book").then((res) => {
       setNewBook(res.data);
     });
   };
 
   const getBestSelling = () => {
-    Axios.get("https://luanvan-server.herokuapp.com/best-selling").then((res) => {
+    Axios.get("http://localhost:3001/best-selling").then((res) => {
       setBestSelling(res.data);
     });
   };

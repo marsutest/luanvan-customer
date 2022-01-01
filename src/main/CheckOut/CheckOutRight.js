@@ -11,7 +11,6 @@ function CheckOutRight(props) {
     shippingFee,
     getVoucher,
     discount,
-    show,
   } = props;
 
   const [discountCode, setDiscountCode] = useState("");
@@ -21,7 +20,7 @@ function CheckOutRight(props) {
   };
 
   const onSubmitVoucher = () => {
-    Axios.get("https://luanvan-server.herokuapp.com/check-voucher", {
+    Axios.get("http://localhost:3001/check-voucher", {
       params: {
         voucher: discountCode,
       },
@@ -32,6 +31,17 @@ function CheckOutRight(props) {
         getVoucher(res.data.voucher);
       }
     });
+  };
+
+  const show = () => {
+    document.getElementById("checkout-content").classList.toggle("hide");
+    document.getElementById("checkout-info").classList.toggle("show");
+    const text = document.getElementById("toggleCheckOutBtn");
+    if (text.innerHTML === "Tiếp theo") {
+      text.innerHTML = "Quay lại";
+    } else {
+      text.innerHTML = "Tiếp theo";
+    }
   };
 
   return (
@@ -81,8 +91,13 @@ function CheckOutRight(props) {
         </div>
         {cartItems.length > 0 && (
           <div className="checkout-submit">
-            {customerInfo.user_id === 0 ? (
+            {customerInfo.user_id !== 0 ? (
+              <button onClick={show} id="toggleCheckOutBtn">
+                Tiếp theo
+              </button>
+            ) : (
               <button
+                id="toggleCheckOutBtn"
                 onClick={() => {
                   document
                     .getElementById("userAccount")
@@ -90,14 +105,10 @@ function CheckOutRight(props) {
                   document
                     .getElementById("accountNav")
                     .classList.toggle("active");
+                  document.getElementById("overlay").classList.toggle("active");
                   document.getElementById("cartNav").classList.toggle("active");
                 }}
-                id="toggleCheckOutBtn"
               >
-                Tiếp theo
-              </button>
-            ) : (
-              <button onClick={show} id="toggleCheckOutBtn">
                 Tiếp theo
               </button>
             )}

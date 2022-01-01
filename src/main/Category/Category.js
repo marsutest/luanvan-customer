@@ -21,7 +21,7 @@ function Category(props) {
     const data = {
       genre_id: query.get("id"),
     };
-    Axios.post("https://luanvan-server.herokuapp.com/get-category-total-page", data).then(
+    Axios.post("http://localhost:3001/get-category-total-page", data).then(
       (res) => {
         setTotalPage(res.data);
       }
@@ -41,7 +41,7 @@ function Category(props) {
       genre_id: query.get("id"),
       page: pageCal(),
     };
-    Axios.post("https://luanvan-server.herokuapp.com/get-category-data?", data).then((res) => {
+    Axios.post("http://localhost:3001/get-category-data?", data).then((res) => {
       setBooks(res.data.books);
       setGenre(res.data.books[0].genre);
     });

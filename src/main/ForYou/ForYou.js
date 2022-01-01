@@ -8,7 +8,7 @@ function ForYou(props) {
   const { cartItems, customerInfo } = props;
   const [recommend, setRecommend] = useState([]);
   const getRecommend = () => {
-    Axios.post("https://luanvan-server.herokuapp.com/recommend", {
+    Axios.post("http://localhost:3001/recommend", {
       userId: customerInfo.user_id,
       favorite: customerInfo.favorite,
     }).then((response) => {
@@ -17,6 +17,9 @@ function ForYou(props) {
   };
   useEffect(() => {
     getRecommend();
+    if (document.querySelector(".navigation-mobile") && !document.querySelector(".navigation-mobile.hide")) {
+      document.querySelector(".navigation-mobile").classList.toggle("hide");
+    }
   }, []);
   return (
     <>

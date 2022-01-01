@@ -31,10 +31,15 @@ function HeaderMobile(props) {
                   document
                     .getElementById("userAccount")
                     .classList.toggle("active");
-                  
-                    document
+                  document
                     .getElementById("accountNav")
                     .classList.toggle("active");
+                  document.getElementById("overlay").classList.toggle("active");
+                  if (document.querySelector(".navigation-mobile.hide")) {
+                    document
+                      .querySelector(".navigation-mobile")
+                      .classList.toggle("hide");
+                  }
                 }}
               >
                 <svg

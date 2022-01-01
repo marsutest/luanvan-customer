@@ -116,6 +116,8 @@ function App() {
     }
   };
 
+  const location = useLocation();
+
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
   };
@@ -123,12 +125,17 @@ function App() {
   const query = useQuery();
 
   useEffect(() => {
-    if (query.get("failed") === localStorage.getItem("randomKey")) {
+    if (
+      query.get("failed") === localStorage.getItem("randomKey") &&
+      localStorage.getItem("randomKey") !== null
+    ) {
       document.getElementById("overlay").classList.toggle("active");
       document.getElementById("order-notpaying").classList.toggle("active");
       setRandomKey(null);
-    }
-    if (query.get("success") === localStorage.getItem("randomKey")) {
+    } else if (
+      query.get("success") === localStorage.getItem("randomKey") &&
+      localStorage.getItem("randomKey") !== null
+    ) {
       onRemoveCartItems();
       document.getElementById("overlay").classList.toggle("active");
       document.getElementById("order-success").classList.toggle("active");
@@ -143,7 +150,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
-
+  
   return (
     <>
       <div className="App">

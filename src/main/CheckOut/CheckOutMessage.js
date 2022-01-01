@@ -5,6 +5,9 @@ export default function CheckOutMessage(props) {
   const closeBtn = () => {
     document.getElementById("overlay").classList.toggle("active");
     document.getElementById(id).classList.toggle("active");
+    if (document.querySelector(".navigation-mobile.zIndex1")) {
+      document.querySelector(".navigation-mobile").classList.toggle("zIndex1");
+    }
   };
   return (
     <div className="checkout-message" id={id}>
@@ -29,6 +32,11 @@ export default function CheckOutMessage(props) {
           onClick={() => {
             document.getElementById("overlay").classList.toggle("active");
             document.getElementById("order-success").classList.toggle("active");
+            if (document.querySelector(".navigation-mobile.zIndex1")) {
+              document
+                .querySelector(".navigation-mobile")
+                .classList.toggle("zIndex1");
+            }
           }}
         >
           {messageBottom}

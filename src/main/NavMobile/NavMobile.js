@@ -4,9 +4,10 @@ import "./NavMobile.css";
 function NavMobile() {
   const location = useLocation();
   const showFormAccount = () => {
-    if (!document.querySelector(".navigation-mobile #accountNav.active")) {
+    if (!document.querySelector("#userAccount.active")) {
       document.getElementById("userAccount").classList.toggle("active");
       document.getElementById("accountNav").classList.toggle("active");
+      document.getElementById("overlay").classList.toggle("active");
       document
         .querySelector(".navigation-mobile li a.active")
         .classList.toggle("active");
@@ -17,7 +18,9 @@ function NavMobile() {
       document.getElementById(id).classList.toggle("active");
       document.getElementById("userAccount").classList.toggle("active");
       document.getElementById("accountNav").classList.toggle("active");
-      // if (active) document.getElementById(activeId).classList.toggle("active");
+    }
+    if (document.querySelector("#overlay.active")) {
+      document.getElementById("overlay").classList.toggle("active");
     }
   };
   return (

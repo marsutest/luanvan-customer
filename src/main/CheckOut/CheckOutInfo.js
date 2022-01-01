@@ -105,13 +105,13 @@ function CheckOutInfo(props) {
   };
 
   const getCityList = () => {
-    Axios.get("https://luanvan-server.herokuapp.com/get-city").then((response) => {
+    Axios.get("http://localhost:3001/get-city").then((response) => {
       setCityList(response.data);
     });
   };
 
   const getDistrictList = (matp) => {
-    Axios.post("https://luanvan-server.herokuapp.com/get-district", { matp: matp }).then(
+    Axios.post("http://localhost:3001/get-district", { matp: matp }).then(
       (response) => {
         setDistrictList(response.data);
       }
@@ -119,7 +119,7 @@ function CheckOutInfo(props) {
   };
 
   const getTownList = (maqh) => {
-    Axios.post("https://luanvan-server.herokuapp.com/get-town", { maqh: maqh }).then(
+    Axios.post("http://localhost:3001/get-town", { maqh: maqh }).then(
       (response) => {
         setTownList(response.data);
       }
@@ -314,7 +314,7 @@ function CheckOutInfo(props) {
           {onlPayment && (
             <>
               <form
-                action="https://luanvan-server.herokuapp.com/create_payment_url"
+                action="http://localhost:3001/create_payment_url"
                 method="POST"
                 id="onlinePaymentForm"
               >
@@ -333,7 +333,11 @@ function CheckOutInfo(props) {
                         orderInfo.discount
                   }
                 />
-                <input type="hidden" name="orderDescription" value="Thanh toán hóa đơn sách" />
+                <input
+                  type="hidden"
+                  name="orderDescription"
+                  value="Thanh toán hóa đơn sách"
+                />
                 <input type="hidden" name="bankCode" value="" />
                 <input type="hidden" name="language" value="vn" />
                 <input
@@ -353,6 +357,9 @@ function CheckOutInfo(props) {
                   document
                     .getElementById("onlinePaymentFormConfirm")
                     .classList.toggle("active");
+                  document
+                    .querySelector(".navigation-mobile")
+                    .classList.toggle("zIndex1");
                 }}
               >
                 Tiến hành đặt hàng
@@ -360,7 +367,6 @@ function CheckOutInfo(props) {
             </>
           )}
         </div>
-
         <div className="confirm" id="onlinePaymentFormConfirm">
           <div className="confirm-question">
             Bạn xác nhận muốn đặt hàng đúng chứ?
@@ -373,11 +379,23 @@ function CheckOutInfo(props) {
                 document
                   .getElementById("onlinePaymentFormConfirm")
                   .classList.toggle("active");
+                document
+                  .querySelector(".navigation-mobile")
+                  .classList.toggle("zIndex1");
               }}
             >
               Quay lại
             </button>
-            <button className="btn-2" type="submit" form="onlinePaymentForm">
+            <button
+              className="btn-2"
+              type="submit"
+              form="onlinePaymentForm"
+              onClick={() => {
+                document
+                  .getElementById("#overlay")
+                  .classList.toggle("zIndex101");
+              }}
+            >
               Đồng ý
             </button>
           </div>

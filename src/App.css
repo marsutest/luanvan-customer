@@ -6,6 +6,14 @@
   --light: #f8f9fa;
 }
 
+.zIndex1 {
+  z-index: 1 !important;
+}
+
+.App .history .navigation-mobile {
+  display: none;
+}
+
 .slick-next:before,
 .slick-prev:before {
   font-size: 22px !important;
@@ -151,7 +159,6 @@ a {
 .cartPopUp {
   text-align: center;
   padding: 20px;
-  z-index: 100;
   font-size: 17px;
   background-color: rgba(50, 50, 50, 0.75);
   color: white;
@@ -170,6 +177,7 @@ a {
   transition: 0.35s;
   opacity: 1;
   visibility: visible;
+  z-index: 100;
 }
 
 .pagination {
@@ -291,10 +299,6 @@ input[type="number"] {
     display: block;
   }
 
-  #overlay {
-    z-index: 1001;
-  }
-
   .search-empty-text {
     font-size: 20px;
   }
@@ -328,6 +332,9 @@ input[type="number"] {
 
   .rw-widget-container.rw-chat-open {
     margin: 0 !important;
+  }
+  .cartPopUp {
+    width: 90%;
   }
 }
 @media (min-width: 992px) {

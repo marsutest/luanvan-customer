@@ -62,13 +62,14 @@
   opacity: 0;
   visibility: hidden;
   transition: 0.4s;
+  z-index: -10;
 }
 
 .user-account.active {
   top: 50%;
   opacity: 1;
   visibility: visible;
-  z-index: 100;
+  z-index: 99;
 }
 
 .user-account-success {
@@ -270,9 +271,9 @@
 
   .user-account {
     width: 100%;
-    height: calc(100vh);
+    height: calc(100vh - 50px);
     border-radius: 0px;
-    top: 50%;
+    top: 50px;
     position: fixed;
     left: 0;
     transform: inherit;
