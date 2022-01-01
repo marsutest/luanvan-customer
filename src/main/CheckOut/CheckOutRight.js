@@ -20,7 +20,7 @@ function CheckOutRight(props) {
   };
 
   const onSubmitVoucher = () => {
-    Axios.get("http://localhost:3001/check-voucher", {
+    Axios.get("https://luanvan-server.herokuapp.com/check-voucher", {
       params: {
         voucher: discountCode,
       },

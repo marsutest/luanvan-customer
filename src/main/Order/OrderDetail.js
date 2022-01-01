@@ -73,7 +73,7 @@ export default function OrderDetail(props) {
     const data = {
       order_id: order_id.order_id,
     };
-    Axios.post("http://localhost:3001/get-order-detail", data).then((res) => {
+    Axios.post("https://luanvan-server.herokuapp.com/get-order-detail", data).then((res) => {
       setOrderDetail(res.data);
       getTotalPrice(res.data);
     });
@@ -134,7 +134,7 @@ export default function OrderDetail(props) {
       },
     };
     Axios.post(
-      "http://localhost:3001/cancel-order",
+      "https://luanvan-server.herokuapp.com/cancel-order",
       { order_id: order_id.order_id },
       config
     ).then((res) => {

@@ -30,7 +30,7 @@ export default function OrderHistory(props) {
   );
 
   const getStatus = () => {
-    Axios.get("http://localhost:3001/get-order-status").then((res) => {
+    Axios.get("https://luanvan-server.herokuapp.com/get-order-status").then((res) => {
       setStatus(res.data);
     });
   };

@@ -19,7 +19,7 @@ function Search(props) {
   const query = useQuery();
 
   useEffect(() => {
-    Axios.post("http://localhost:3001/get-total-search?" + query).then(
+    Axios.post("https://luanvan-server.herokuapp.com/get-total-search?" + query).then(
       (res) => {
         setTotalCount(res.data[0].totalCount);
         setTotalPage(Math.ceil(res.data[0].totalCount / 12));
@@ -40,7 +40,7 @@ function Search(props) {
       q: query.get("q"),
       page: pageCal(),
     };
-    Axios.post("http://localhost:3001/search", data).then((res) => {
+    Axios.post("https://luanvan-server.herokuapp.com/search", data).then((res) => {
       setSearch(res.data);
     });
   };
