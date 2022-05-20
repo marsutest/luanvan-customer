@@ -34,7 +34,7 @@ export default function OrderHistoryContent(props) {
       user_id: customerInfo.user_id,
       page: pageCal(),
     };
-    Axios.post("https://luanvan-server.herokuapp.com/get-order-history", data).then((res) => {
+    Axios.post("https://luanvan-server-1.herokuapp.com/get-order-history", data).then((res) => {
       setOrderHistory(res.data);
     });
   };
@@ -44,7 +44,7 @@ export default function OrderHistoryContent(props) {
       status_id: currentStatus,
       user_id: customerInfo.user_id,
     };
-    Axios.post("https://luanvan-server.herokuapp.com/get-total-order-history", data).then(
+    Axios.post("https://luanvan-server-1.herokuapp.com/get-total-order-history", data).then(
       (res) => {
         setTotalPage(Math.ceil(res.data[0].totalCount / 5));
       }

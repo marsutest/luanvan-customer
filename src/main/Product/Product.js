@@ -58,7 +58,7 @@ function Product(props) {
   const query = useQuery();
 
   const getBookDetail = () => {
-    Axios.get("https://luanvan-server.herokuapp.com/get-book-detail?" + query).then(
+    Axios.get("https://luanvan-server-1.herokuapp.com/get-book-detail?" + query).then(
       (response) => {
         setBookDetail(response.data);
       }
@@ -66,7 +66,7 @@ function Product(props) {
   };
 
   const getBookRating = () => {
-    Axios.post("https://luanvan-server.herokuapp.com/get-book-rating?" + query).then(
+    Axios.post("https://luanvan-server-1.herokuapp.com/get-book-rating?" + query).then(
       (response) => {
         setBookRating(response.data);
       }
@@ -77,7 +77,7 @@ function Product(props) {
     const data = {
       user_id: customerInfo.user_id,
     };
-    Axios.post("https://luanvan-server.herokuapp.com/get-user-rating?" + query, data).then(
+    Axios.post("https://luanvan-server-1.herokuapp.com/get-user-rating?" + query, data).then(
       (response) => {
         setUserRating(response.data);
       }
@@ -92,10 +92,10 @@ function Product(props) {
 
   useEffect(() => {
     Axios.all([
-      Axios.get("https://luanvan-server.herokuapp.com/get-recommend-content-based?" + query),
-      Axios.get("https://luanvan-server.herokuapp.com/get-book-detail?" + query),
-      Axios.post("https://luanvan-server.herokuapp.com/get-book-rating?" + query),
-      Axios.post("https://luanvan-server.herokuapp.com/get-user-rating?" + query, {
+      Axios.get("https://luanvan-server-1.herokuapp.com/get-recommend-content-based?" + query),
+      Axios.get("https://luanvan-server-1.herokuapp.com/get-book-detail?" + query),
+      Axios.post("https://luanvan-server-1.herokuapp.com/get-book-rating?" + query),
+      Axios.post("https://luanvan-server-1.herokuapp.com/get-user-rating?" + query, {
         user_id: customerInfo.user_id,
       }),
     ]).then(
