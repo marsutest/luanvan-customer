@@ -105,13 +105,13 @@ function CheckOutInfo(props) {
   };
 
   const getCityList = () => {
-    Axios.get("https://luanvan-server-1.herokuapp.com/get-city").then((response) => {
+    Axios.get("https://luanvan-server.herokuapp.com/get-city").then((response) => {
       setCityList(response.data);
     });
   };
 
   const getDistrictList = (matp) => {
-    Axios.post("https://luanvan-server-1.herokuapp.com/get-district", { matp: matp }).then(
+    Axios.post("https://luanvan-server.herokuapp.com/get-district", { matp: matp }).then(
       (response) => {
         setDistrictList(response.data);
       }
@@ -119,7 +119,7 @@ function CheckOutInfo(props) {
   };
 
   const getTownList = (maqh) => {
-    Axios.post("https://luanvan-server-1.herokuapp.com/get-town", { maqh: maqh }).then(
+    Axios.post("https://luanvan-server.herokuapp.com/get-town", { maqh: maqh }).then(
       (response) => {
         setTownList(response.data);
       }
@@ -314,7 +314,7 @@ function CheckOutInfo(props) {
           {onlPayment && (
             <>
               <form
-                action="https://luanvan-server-1.herokuapp.com/create_payment_url"
+                action="https://luanvan-server.herokuapp.com/create_payment_url"
                 method="POST"
                 id="onlinePaymentForm"
               >

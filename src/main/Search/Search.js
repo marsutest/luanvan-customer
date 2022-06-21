@@ -19,7 +19,7 @@ function Search(props) {
   const query = useQuery();
 
   useEffect(() => {
-    Axios.post("https://luanvan-server-1.herokuapp.com/get-total-search?" + query).then(
+    Axios.post("https://luanvan-server.herokuapp.com/get-total-search?" + query).then(
       (res) => {
         setTotalCount(res.data[0].totalCount);
         setTotalPage(Math.ceil(res.data[0].totalCount / 12));
@@ -40,7 +40,7 @@ function Search(props) {
       q: query.get("q"),
       page: pageCal(),
     };
-    Axios.post("https://luanvan-server-1.herokuapp.com/search", data).then((res) => {
+    Axios.post("https://luanvan-server.herokuapp.com/search", data).then((res) => {
       setSearch(res.data);
     });
   };

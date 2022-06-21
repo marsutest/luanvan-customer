@@ -60,7 +60,7 @@ function CheckOut(props) {
       },
     };
     if ((orderInfo.payment_method = "Khi nhận hàng")) {
-      Axios.post("https://luanvan-server-1.herokuapp.com/ordering", orderInfo, config).then(
+      Axios.post("https://luanvan-server.herokuapp.com/ordering", orderInfo, config).then(
         (res) => {
           if (res.data.status === true) {
             onRemoveCartItems();

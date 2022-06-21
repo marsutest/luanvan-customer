@@ -50,7 +50,7 @@ function LoginForm(props) {
       username: registerInfo.username,
       password: registerInfo.password,
     };
-    Axios.post("https://luanvan-server-1.herokuapp.com/register", data).then((res) => {
+    Axios.post("https://luanvan-server.herokuapp.com/register", data).then((res) => {
       setRegisterMessage("");
       if (res.data.message === "success") {
         document.getElementById("user-favorite").classList.toggle("hide");
@@ -69,7 +69,7 @@ function LoginForm(props) {
 
   const onAddFavorite = (e, option) => {
     option === true
-      ? Axios.post("https://luanvan-server-1.herokuapp.com/add-favorite", {
+      ? Axios.post("https://luanvan-server.herokuapp.com/add-favorite", {
           favorite: favorite,
           username: loginInfo.username,
         }).then((res) => {
@@ -79,7 +79,7 @@ function LoginForm(props) {
             setRegisterMessage(res.data.message);
           }
         })
-      : Axios.post("https://luanvan-server-1.herokuapp.com/add-favorite", {
+      : Axios.post("https://luanvan-server.herokuapp.com/add-favorite", {
           favorite: ["tn", "vh", "kn", "gd", "xh", "kd"],
           username: loginInfo.username,
         }).then((res) => {
@@ -101,7 +101,7 @@ function LoginForm(props) {
   const [loginMessage, setLoginMessage] = useState("");
   const onLogin = (e) => {
     e.preventDefault();
-    Axios.post("https://luanvan-server-1.herokuapp.com/login", {
+    Axios.post("https://luanvan-server.herokuapp.com/login", {
       username: loginInfo.username,
       password: loginInfo.password,
     }).then((response) => {
@@ -169,7 +169,7 @@ function LoginForm(props) {
         Authorization: "Bearer " + localStorage.getItem("accessToken"),
       },
     };
-    Axios.post("https://luanvan-server-1.herokuapp.com/change-password", data, config).then(
+    Axios.post("https://luanvan-server.herokuapp.com/change-password", data, config).then(
       (response) => {
         setChangePasswordMessage("");
         if (response.data.message === "") {
@@ -209,7 +209,7 @@ function LoginForm(props) {
         Authorization: "Bearer " + localStorage.getItem("accessToken"),
       },
     };
-    Axios.post("https://luanvan-server-1.herokuapp.com/change-info", data, config).then(
+    Axios.post("https://luanvan-server.herokuapp.com/change-info", data, config).then(
       (response) => {
         e.target.reset();
         setCustomerInfo(changeInfo);

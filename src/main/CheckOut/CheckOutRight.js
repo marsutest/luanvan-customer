@@ -20,7 +20,7 @@ function CheckOutRight(props) {
   };
 
   const onSubmitVoucher = () => {
-    Axios.get("https://luanvan-server-1.herokuapp.com/check-voucher", {
+    Axios.get("https://luanvan-server.herokuapp.com/check-voucher", {
       params: {
         voucher: discountCode,
       },

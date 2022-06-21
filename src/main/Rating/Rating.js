@@ -42,7 +42,7 @@ function Rating(props) {
             Authorization: "Bearer " + localStorage.getItem("accessToken"),
           },
         };
-        Axios.post("https://luanvan-server-1.herokuapp.com/rate", data, config).then((res) => {
+        Axios.post("https://luanvan-server.herokuapp.com/rate", data, config).then((res) => {
           allRatingFunction();
         });
       } else {
